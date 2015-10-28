@@ -1,8 +1,12 @@
 FROM        centos:6.6
 
-ADD         2.1.3/etcd /bin/etcd
+ADD         2.1.3.tar.gz /var/
 
-ADD         2.1.3/etcdctl     /bin/etcdctl
+RUN         mv /var/2.1.3 /var/etcd
+
+RUN         cp /var/etcd/etcd /bin/etcd
+
+RUN         cp /var/etcd/etcdctl  /bin/etcdctl
 
 VOLUME ["/data"]
 
