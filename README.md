@@ -1,8 +1,10 @@
 #docker-etcd
 
-制作docker etcd镜像
+制作docker etcd服务端的镜像,后期我会及时更新etcd的版本
+
 ```
-[root@ubuntu:~/core]#docker build -t rfyiamcool/etcd --file `pwd`/Dockerfile  `pwd`
+docker build -t rfyiamcool/etcd --file `pwd`/Dockerfile  `pwd`
+
 Sending build context to Docker daemon 27.23 MB
 Sending build context to Docker daemon
 Step 0 : FROM centos:6.6
@@ -32,7 +34,21 @@ Removing intermediate container c7f2decd92a0
 Successfully built 53bd9e8c879e
 ```
 
-启动容器
+启动含有etcd server的容器
 ```
 docker run --rm -it -p 4001:4001 -p 7001:7001 -v /var/etcd/:/data rfyiamcool/etcd:latest -addr 0.0.0.0:4001
 ```
+
+我们再来创建etcdctl客户端的docker镜像.
+
+```
+docker build -t rfyiamcool/etcdctl --file `pwd`/Dockerfile_etcdctl  `pwd`
+```
+
+启动含有etcd客户端的容器.
+```
+ocker run --rm -it rfyiamcool/etcdctl:latest set blog xiaorui.cc
+```
+
+
+END.
