@@ -1,5 +1,8 @@
 #docker-etcd
 
+etcd不同版本的下载地址:  
+[https://github.com/coreos/etcd/releases/](https://github.com/coreos/etcd/releases/)
+
 制作docker etcd服务端的镜像,后期我会及时更新etcd的版本
 
 ```
